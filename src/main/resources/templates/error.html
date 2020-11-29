@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Cake Manager Micro Service - Error Page</title>
+
+<link href="webjars/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+
+</head>
+<body>
+	<h1>Error Occurred!</h1>
+	<b>[<span th:text="${status}">status</span>] <span
+		th:text="${error}">error</span>
+	</b>
+	<p th:text="${message}">message</p>
+	<script src="webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

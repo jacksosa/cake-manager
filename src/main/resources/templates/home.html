@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Cake Manager Micro Service - Home Page</title>
+
+<link href="webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<style type="text/css">
+caption {
+	caption-side: top;
+}
+</style>
+
+<body>
+	<div class="container">
+		<h1>Cake Manager Micro Service</h1>
+		<table class="table">
+			<thead>
+			<tbody>
+				<tr>
+					<th>
+						<form id="formCake" method="post" action="#" th:action="@{/}"
+							th:object="${cake}" class="form-inline" role="form">
+							<table class="table">
+								<caption>Add a new cake recipe to the database</caption>
+								<tbody>
+									<tr>
+										<td>
+											<div class="row">
+												<div class="col">
+													<input type="text" width="100" id="title"
+														placeholder="Enter a Title" class="form-control"
+														th:field="*{title}" />
+												</div>
+												<div class="col">
+													<input type="text" width="100" id="description"
+														placeholder="Enter a Description" class="form-control"
+														th:field="*{description}" />
+												</div>
+												<div class="col">
+													<input type="text" width="100" id="image"
+														placeholder="Enter a image url" class="form-control"
+														th:field="*{image}" />
+												</div>
+												<div class="col">
+													<button type="submit" class="btn btn-primary">Submit</button>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col">
+													<span th:if="${#fields.hasErrors('title')}"
+														th:errors="*{title}" class="error text-danger small"></span>
+												</div>
+												<div class="col">
+													<span th:if="${#fields.hasErrors('description')}"
+														th:errors="*{description}" class="error text-danger small"></span>
+												</div>
+												<div class="col">
+													<span th:if="${#fields.hasErrors('image')}"
+														th:errors="*{image}" class="error text-danger small"></span>
+												</div>
+												<div class="col"></div>
+											</div>
+										</td>
+									</tr>
+									<tr th:if="${saved != null}">
+										<td class="text-success">Cake id: <span
+											th:text="${saved.id}"></span> has been added to the db.
+										</td>
+									</tr>
+									<tr th:if="${exists != null}">
+										<td class="text-danger"><span th:text="${exists}"></span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+					</th>
+				</tr>
+				<tr>
+					<th>
+						<table class="table">
+							<caption style="caption-side: top;">Current list of
+								cake recipes in the database</caption>
+							<thead class="thead-light">
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Title</th>
+									<th scope="col">Description</th>
+									<th scope="col">Image</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="cake : ${cakes}">
+									<th scope="row" th:text="${cake.id}"></th>
+									<td th:text="${cake.title}"></td>
+									<td th:text="${cake.description}"></td>
+									<td><img th:src="${cake.image}" th:alt="${cake.title}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script src="webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

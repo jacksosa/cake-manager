@@ -1,0 +1,15 @@
+Created new spring boot mvc project after assessing the current codebase
+
+Added support for in-memory persistence with H2 and JPA
+
+Created data.sql from the original json file after stripping out the duplicated entries as I assumed the title was to have a unique constraint
+
+Created test cases for the development of the Cake DTO and the integration testing of the service layer
+
+Created the home & error view pages using thymeleaf & bootstrap 
+
+Created the cake rest controller to provide a public API for listing and creating cakes in the db
+
+Add OAuth2 support using GitHub as the auth provider for local & gitlab-ci deployments
+
+Created CI\CD pipeline on Gitlabs with docker containerization and deployment to Kubernetes clusters on google cloud 

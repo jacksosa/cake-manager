@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cake-manager
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+        app: cake-manager
+  template:
+    metadata:
+      labels:
+        app: cake-manager
+    spec:
+      containers:
+      - name: cake-manager
+        image: registry.gitlab.com/jacksosa1976/cake-manager     
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8282
+      imagePullSecrets:
+        - name: registry.gitlab.com
